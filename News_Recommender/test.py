@@ -149,7 +149,7 @@ item_w2v_emb_dict=trian_item_word2vec(user_click_merge)
 sub_user_ids = np.random.choice(user_click_merge.user_id.unique(), size=5, replace=False)
 sub_user_info = user_click_merge[user_click_merge['user_id'].isin(sub_user_ids)]
 
-sub_user_info.head()
+print(sub_user_info.head())
 
 #将训练得到的词向量进行可视化
 def get_item_sim_list(df):
@@ -159,11 +159,13 @@ def get_item_sim_list(df):
         emb1 = item_w2v_emb_dict[str(item_list[i])] # 需要注意的是word2vec训练时候使用的是str类型的数据
         emb2 = item_w2v_emb_dict[str(item_list[i+1])]
         sim_list.append(np.dot(emb1,emb2)/(np.linalg.norm(emb1)*(np.linalg.norm(emb2))))
+        print("emb1的数据：{}\nemb2的数据{}\n".format(emb1,emb2))
+        print("\n================================")
     sim_list.append(0)
-
+    print("相似矩阵的数据：{}".format(sim_list[:20]))
     return sim_list
 
 for _, user_df in sub_user_info.groupby('user_id'):
     item_sim_list = get_item_sim_list(user_df)
-    plt.plot(item_sim_list)
-    plt.show()
+    # plt.plot(item_sim_list)
+    # plt.show()

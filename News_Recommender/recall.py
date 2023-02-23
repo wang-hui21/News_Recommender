@@ -301,7 +301,7 @@ def usercf_sim(all_click_df, user_activate_degree_dict):
     # 将得到的相似性矩阵保存到本地
     pickle.dump(u2u_sim_, open(save_path + 'usercf_u2u_sim.pkl', 'wb'))
 
-    return u2u_sim_
+    return u2u_sim_    #返回用户相似度矩阵
 
 user_activate_degree_dict = get_user_activate_degree_dict(all_click_df)
 
