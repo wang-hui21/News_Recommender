@@ -354,7 +354,7 @@ item_emb_df=item_emb.iloc[:30000,:]
 emb_i2i_sim = embdding_sim(all_click_df, item_emb_df, save_path, topk=10) # topk可以自行设置
 
 
-# 获取双塔召回时的训练验证数据
+# #获取双塔召回时的训练验证数据
 # negsample指的是通过滑窗构建样本的时候，负样本的数量
 def gen_data_set(data, negsample=0):
     data.sort_values("click_timestamp", inplace=True)   #按照点击时间排序，并取代原先顺序
